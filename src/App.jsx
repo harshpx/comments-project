@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import CommentSection from './components/CommentSection';
 import {DataContext} from './utils/context.js';
 
+import { IoSend } from "react-icons/io5";
 import logowhite from './assets/logowhite.png';
 import logoblack from './assets/logoblack.png';
 import cyanUser from './assets/cyanuser.png';
@@ -130,7 +131,7 @@ const App = () => {
 
                             <textarea type="text" rows='4' value={text} onChange={(e)=>setText(String(e.target.value))} className='w-full rounded-2xl px-5 py-2 focus:outline-none bg-neutral-700' placeholder='Write your mind here...'/>
 
-                            <button onClick={postComment} className='text-sm rounded-lg bg-cyan-500 px-2 py-1 w-1/4'>Post</button>
+                            <button onClick={postComment} className='flex gap-2 items-center text-base rounded-lg bg-cyan-500 px-2 py-1'>Post<IoSend/></button>
 
                         </div>
 

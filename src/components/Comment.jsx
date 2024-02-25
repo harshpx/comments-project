@@ -60,7 +60,7 @@ const Comment = ({data}) => {
     
             <div className='flex justify-between items-center w-full bg-neutral-900 rounded-2xl px-3 py-1'>
                 <div className='text-xl leading-10'>{data.text}</div>
-                <div className='cursor-pointer hover:scale-110 duration-150' onClick={linkUnlike}>
+                <div className='cursor-pointer hover:scale-125 duration-150' onClick={linkUnlike}>
                     {data.star ? <FaStar className='text-cyan-400'/> : <FaRegStar/>}
                 </div>
             </div>
@@ -78,8 +78,8 @@ const Comment = ({data}) => {
             <div className={`flex justify-between items-center w-full bg-neutral-800 rounded-2xl  px-3 py-1 ${!toReply ? "hidden" : ""} mb-2`}>
 
                 <textarea type="text" name="text" id="text" value={replyText} onChange={(e)=>setReplyText(String(e.target.value))} rows={1} className='w-full bg-neutral-800 focus:outline-none leading-10' placeholder='Write reply...'/>
-                <button onClick={reply} className='text-cyan-400'>
-                    <IoSend/>
+                <button onClick={reply} className='hover:text-cyan-400'>
+                    <IoSend size={20}/>
                 </button>
 
             </div>

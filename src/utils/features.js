@@ -102,11 +102,127 @@ const reconstruct = (comments)=>{
     return data;
 }
 
+const sortByDateDesc = (comments)=>{
+    const data = new Map();
+    
+    const arr1 = comments.filter(cmnt=>cmnt.parentId==0)
+    arr1.sort((a,b)=>b.id-a.id);
+    
+    for(let lvl1 of arr1){
+        const c1 = lvl1.children;
+        data.set(lvl1,new Map());
+
+        const arr2 = comments.filter(cmnt=>c1.includes(cmnt.id));
+        arr2.sort((a,b)=>b.id-a.id);
+
+        for(let lvl2 of arr2){
+            const c2 = lvl2.children;
+            data.get(lvl1).set(lvl2,new Set());
+
+            const arr3 = comments.filter(cmnt=>c2.includes(cmnt.id));
+            arr3.sort((a,b)=>b.id-a.id);
+
+            for(let lvl3 of arr3){
+                data.get(lvl1).get(lvl2).add(lvl3);
+            }
+        }
+    }
+    return data;
+}
+
+const sortByDateAsc = (comments)=>{
+    const data = new Map();
+
+    const arr1 = comments.filter(cmnt=>cmnt.parentId==0)
+    arr1.sort((a,b)=>a.id-b.id);
+    
+    for(let lvl1 of arr1){
+        const c1 = lvl1.children;
+        data.set(lvl1,new Map());
+
+        const arr2 = comments.filter(cmnt=>c1.includes(cmnt.id));
+        arr2.sort((a,b)=>a.id-b.id);
+
+        for(let lvl2 of arr2){
+            const c2 = lvl2.children;
+            data.get(lvl1).set(lvl2,new Set());
+
+            const arr3 = comments.filter(cmnt=>c2.includes(cmnt.id));
+            arr3.sort((a,b)=>a.id-b.id);
+
+            for(let lvl3 of arr3){
+                data.get(lvl1).get(lvl2).add(lvl3);
+            }
+        } 
+    }
+    return data;
+}
+
+const sortByReplyCountDesc = (comments)=>{
+    const data = new Map();
+
+    const arr1 = comments.filter(cmnt=>cmnt.parentId==0)
+    arr1.sort((a,b)=>b.children.length-a.children.length);
+    
+    for(let lvl1 of arr1){
+        const c1 = lvl1.children;
+        data.set(lvl1,new Map());
+
+        const arr2 = comments.filter(cmnt=>c1.includes(cmnt.id));
+        arr2.sort((a,b)=>b.children.length-a.children.length);
+
+        for(let lvl2 of arr2){
+            const c2 = lvl2.children;
+            data.get(lvl1).set(lvl2,new Set());
+
+            const arr3 = comments.filter(cmnt=>c2.includes(cmnt.id));
+            arr3.sort((a,b)=>b.children.length-a.children.length);
+
+            for(let lvl3 of arr3){
+                data.get(lvl1).get(lvl2).add(lvl3);
+            }
+        }
+    }
+    return data;
+}
+
+const sortByReplyCountAsc = (comments)=>{
+    const data = new Map();
+
+    const arr1 = comments.filter(cmnt=>cmnt.parentId==0)
+    arr1.sort((a,b)=>a.children.length-b.children.length);
+    
+    for(let lvl1 of arr1){
+        const c1 = lvl1.children;
+        data.set(lvl1,new Map());
+
+        const arr2 = comments.filter(cmnt=>c1.includes(cmnt.id));
+        arr2.sort((a,b)=>a.children.length-b.children.length);
+
+        for(let lvl2 of arr2){
+            const c2 = lvl2.children;
+            data.get(lvl1).set(lvl2,new Set());
+
+            const arr3 = comments.filter(cmnt=>c2.includes(cmnt.id));
+            arr3.sort((a,b)=>a.children.length-b.children.length);
+
+            for(let lvl3 of arr3){
+                data.get(lvl1).get(lvl2).add(lvl3);
+            }
+        }
+    }
+    return data;
+}
+
 const features = {
     addReply,
     deleteComment,
     toggleStar,
-    reconstruct
+    reconstruct,
+    sortByDateAsc,
+    sortByDateDesc,
+    sortByReplyCountAsc,
+    sortByReplyCountDesc
 }
 
 export default features;
