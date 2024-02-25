@@ -58,7 +58,7 @@ const Comment = ({data}) => {
     return (
         <div className={`flex flex-col justify-center items-start  ${data.level==1 ? 'w-9/12' : (data.level==2 ? 'w-7/12' : 'w-5/12')}`}>
     
-            <div className='flex justify-between items-center w-full bg-neutral-900 rounded-2xl px-3 py-1'>
+            <div className='flex justify-between items-center w-full bg-neutral-900 rounded-2xl px-3 py-1 no-scrollbar overflow-scroll'>
                 <div className='text-xl leading-10'>{data.text}</div>
                 <div className='cursor-pointer hover:scale-125 duration-150' onClick={linkUnlike}>
                     {data.star ? <FaStar className='text-cyan-400'/> : <FaRegStar/>}
@@ -77,7 +77,7 @@ const Comment = ({data}) => {
 
             <div className={`flex justify-between items-center w-full bg-neutral-800 rounded-2xl  px-3 py-1 ${!toReply ? "hidden" : ""} mb-2`}>
 
-                <textarea type="text" name="text" id="text" value={replyText} onChange={(e)=>setReplyText(String(e.target.value))} rows={1} className='w-full bg-neutral-800 focus:outline-none leading-10' placeholder='Write reply...'/>
+                <textarea type="text" name="text" id="text" value={replyText} onChange={(e)=>setReplyText(String(e.target.value))} rows={1} className='w-full bg-neutral-800 focus:outline-none leading-10 no-scrollbar' placeholder='Write reply...'/>
                 <button onClick={reply} className='hover:text-cyan-400'>
                     <IoSend size={20}/>
                 </button>

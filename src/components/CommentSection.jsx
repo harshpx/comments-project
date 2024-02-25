@@ -65,7 +65,7 @@ const CommentSection = () => {
                     </div>
                 </div>
 
-                <div className='rounded-xl bg-neutral-700 h-96 w-full p-4 flex flex-col justify-start items-end gap-3 overflow-scroll'>
+                <div className='rounded-xl bg-neutral-700 h-96 w-full p-4 flex flex-col justify-start items-end gap-3 overflow-scroll no-scrollbar'>
                     {/* rendering a 3-lvl comments thread  */}
                     {[...data.entries()]?.map(([lvl1,c1])=>{
                         return <div className='w-full flex flex-col items-end gap-1' key={Math.random()}>
