@@ -84,8 +84,7 @@ const App = () => {
 
 
     return (
-        <div className={`min-h-screen min-w-full bg-neutral-800 text-white flex flex-col items-center relative ${!user ? "justify-center" : ""}`}>
-
+        <div className={`min-h-screen min-w-full bg-neutral-800 text-white flex flex-col items-center ${!user ? "justify-center" : ""}`}>
             {/* presistant navbar */}
             <nav className={`top-0 w-full py-2 px-4 bg-neutral-900 flex items-center ${!user ? "justify-between absolute top-0" : "justify-between absolute top-0"}`}>
                 {!user ? <>
@@ -117,6 +116,7 @@ const App = () => {
                     <div className='w-1/4'>
                         <button onClick={getIn} className='w-full bg-cyan-500 rounded-lg px-3 py-1 hover:bg-cyan-600 hover:scale-105 duration-150'>Enter!</button>
                     </div>
+                    <div className='absolute bottom-3'>Made with &hearts; by Harsh Priye</div>
                 </div>
             </> : <>
                 {/* code when signed in */}
